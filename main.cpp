@@ -1,9 +1,10 @@
 ///******************************************************************************
-//Description: This program will 
+//Description: This program will print a list of movies with their year of 
+//release, title, and screenwriter using a vector and a Movie class.
 //Author: Jared Melendez
 //COMSC 210 Section 5293
 //Date September 23, 2024
-//Status: WIP
+//Status: Done
 ///******************************************************************************
 
 #include <iostream>
@@ -42,15 +43,17 @@ const int SIZE = 4;
 //the main function
 int main()
 {
+    //Declare and initilize variable
     vector<Movie> movies;
-
+    //calls the dataRead function
     dataRead(movies);
-
-    for (size_t i = 0; i < SIZE; i++)
+    //for loop that iterates through the movies vector
+    for (Movie movie : movies)
     {
-        
+        //calls print method
+        movie.print();
+        cout << endl;
     }
-    
 }
 //the dataRead function
 void dataRead(vector<Movie> &vector)
@@ -68,14 +71,16 @@ void dataRead(vector<Movie> &vector)
         //reads the values in the file
         for (size_t i = 0; i < SIZE; i++)
         {
-            ifs >> title;
+            //sets each value to a temp variable
+            getline(ifs,title);
             ifs >> year;
-            ifs >> screenwriter;
-
+            ifs.ignore();
+            getline(ifs,screenwriter);
+            //sets each private variable for the temp Movie variable
             temp.setTitle(title);
             temp.setYear(year);
             temp.setScreenWriter(screenwriter);
-            //sets the values of the vector to the values in the file
+            //pushs the temp Movie variable into the vector
             vector.push_back(temp);
         }
         ifs.close();
