@@ -7,6 +7,8 @@
 ///******************************************************************************
 
 #include <iostream>
+#include <vector>
+#include <fstream>
 using namespace std;
 //the Movie class
 class Movie 
@@ -33,9 +35,40 @@ class Movie
             cout << "Movie: " << title << endl;
         }
 };
-
+//Prototype function
+Movie dataRead();
+//Declare and initilize variable
+const int SIZE = 4;
 //the main function
 int main()
 {
     
+}
+//the dataRead function
+Movie dataRead()
+{
+    //declare and initilize variables
+    ifstream ifs;
+    string screenwriter, title;
+    int year;
+    //opens files
+    ifs.open("data.txt");
+    //check if file was found
+    if (ifs)
+    {
+        //reads the values in the file
+        for (size_t i = 0; i < SIZE; i++)
+        {
+            ifs >> hours;
+            //sets the values of the vector to the values in the file
+            vector.push_back(hours);
+        }
+        ifs.close();
+    }
+    else
+    {
+        //prints and exits cause the file wasn't found
+        cout << "Error opening file" << endl;
+        exit(EXIT_FAILURE);
+    }
 }
