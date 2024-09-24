@@ -36,19 +36,28 @@ class Movie
         }
 };
 //Prototype function
-Movie dataRead();
+void dataRead(vector<Movie> &);
 //Declare and initilize variable
 const int SIZE = 4;
 //the main function
 int main()
 {
+    vector<Movie> movies;
+
+    dataRead(movies);
+
+    for (size_t i = 0; i < SIZE; i++)
+    {
+        
+    }
     
 }
 //the dataRead function
-Movie dataRead()
+void dataRead(vector<Movie> &vector)
 {
     //declare and initilize variables
     ifstream ifs;
+    Movie temp;
     string screenwriter, title;
     int year;
     //opens files
@@ -59,9 +68,15 @@ Movie dataRead()
         //reads the values in the file
         for (size_t i = 0; i < SIZE; i++)
         {
-            ifs >> hours;
+            ifs >> title;
+            ifs >> year;
+            ifs >> screenwriter;
+
+            temp.setTitle(title);
+            temp.setYear(year);
+            temp.setScreenWriter(screenwriter);
             //sets the values of the vector to the values in the file
-            vector.push_back(hours);
+            vector.push_back(temp);
         }
         ifs.close();
     }
